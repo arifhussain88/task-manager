@@ -23,10 +23,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        public function run(): void
-        {
-            Project::firstOrCreate(['name' => 'Website Redesign']);
-            Project::firstOrCreate(['name' => 'Mobile App Launch']);
-        }
+        Project::firstOrCreate(['name' => 'Website Redesign']);
+        Project::firstOrCreate(['name' => 'Mobile App Launch']);
+        
     }
 }
