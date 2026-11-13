@@ -12,6 +12,8 @@ class ProjectController extends Controller
     {
         $project = Project::create($request->validated());
 
-        return redirect()->route('tasks.index', ['project_id' => $project->id]);
+        return redirect()
+                ->route('tasks.index', ['project_id' => $project->id])
+                ->with('success', "Project \"{$project->name}\" created.");
     }
 }

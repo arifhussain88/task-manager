@@ -36,14 +36,14 @@ class TaskController extends Controller
             'priority'   => $nextPriority,
         ]);
 
-        return redirect()->route('tasks.index', ['project_id' => $validated['project_id']]);
+        return redirect()->route('tasks.index', ['project_id' => $validated['project_id']])->with('success', 'Task added successfully.');
     }
 
     public function update(UpdateTaskRequest $request, Task $task)
     {
         $task->update($request->validated());
 
-        return redirect()->route('tasks.index', ['project_id' => $task->project_id]);
+        return redirect()->route('tasks.index', ['project_id' => $task->project_id])->with('success', 'Task updated successfully.');
     }
 
     public function destroy(Task $task)
@@ -56,7 +56,7 @@ class TaskController extends Controller
             $item->update(['priority' => $index + 1]);
         }
 
-        return redirect()->route('tasks.index', ['project_id' => $projectId]);
+        return redirect()->route('tasks.index', ['project_id' => $projectId])->with('success', 'Task deleted.');
     }
 
     public function reorder(ReorderTasksRequest $request)
@@ -70,5 +70,5 @@ class TaskController extends Controller
         });
 
         return response()->json(['status' => 'success']);
-    }
+    }   
 }
